@@ -37,6 +37,13 @@
             { id: 103, text: "使っていない照明を消して節電する", desc: "身近なエコアクションから、持続可能な暮らしを始めましょう。", icon: "fa-lightbulb", points: 5 }
         ];
 
+        const leaderboardParticipants = [
+            { name: "みどりさん", points: 120, icon: "🌱" },
+            { name: "ひなたさん", points: 95, icon: "☀️" },
+            { name: "そらさん", points: 80, icon: "🌈" },
+            { name: "あおいさん", points: 60, icon: "🌿" }
+        ];
+
         // --- 2. 状態管理 (In-Memory State for simple version) ---
         let appState = {
             totalPoints: 0,
@@ -69,6 +76,10 @@
         const completedOverlay = document.getElementById('completedOverlay');
         const optionalMissionsSection = document.getElementById('optionalMissionsSection');
         const optionalMissionsList = document.getElementById('optionalMissionsList');
+        const leaderboardList = document.getElementById('leaderboardList');
+        const yourRankEl = document.getElementById('yourRank');
+        const rankPointsEl = document.getElementById('rankPoints');
+        const rankDifferenceEl = document.getElementById('rankDifference');
         const historyListEl = document.getElementById('historyList');
         const emptyHistoryEl = document.getElementById('emptyHistory');
 
@@ -94,6 +105,7 @@
                 updateDateDisplay();
                 checkDailyMission();
                 renderPoints();
+                renderLeaderboard();
                 renderHistory();
             }
         }
@@ -287,6 +299,34 @@
         function renderPoints() {
             // アニメーション効果のために、少しずつカウントアップさせることも可能です。
             totalPointsEl.textContent = appState.totalPoints;
+            renderLeaderboard();
+        }
+
+        function renderLeaderboard() {
+            const entries = [
+                ...leaderboardParticipants,
+                { name: "あなた", points: appState.totalPoints, icon: "★", isYou: true }
+            ].sort((a, b) => b.points - a.points);
+            const yourRank = entries.findIndex(entry => entry.isYou) + 1;
+            const nextEntry = entries[yourRank - 2];
+
+            yourRankEl.textContent = `${yourRank}位`;
+            rankPointsEl.textContent = appState.totalPoints;
+            rankDifferenceEl.textContent = nextEntry
+                ? `あと ${nextEntry.points - appState.totalPoints}pt で${yourRank - 1}位`
+                : "トップのポイントです";
+
+            const visibleEntries = yourRank <= 5
+                ? entries.slice(0, 5)
+                : [...entries.slice(0, 4), entries[yourRank - 1]];
+            leaderboardList.innerHTML = visibleEntries.map((entry, index) => `
+                <div class="leaderboard-row ${entry.isYou ? 'is-you' : ''}">
+                    <span class="leaderboard-rank">${entry.isYou ? yourRank : entries.indexOf(entry) + 1}</span>
+                    <span class="leaderboard-avatar">${entry.icon}</span>
+                    <span class="flex-1 text-sm font-bold text-gray-700">${entry.name}${entry.isYou ? '（あなた）' : ''}</span>
+                    <span class="text-sm font-bold text-orange-600">${entry.points} pts</span>
+                </div>
+            `).join('');
         }
 
         function renderHistory() {
