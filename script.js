@@ -65,8 +65,6 @@
         
         const totalPointsEl = document.getElementById('totalPoints');
         const dateDisplayEl = document.getElementById('dateDisplay');
-        const countdownTimerEl = document.getElementById('countdownTimer');
-        const nextMissionTimeEl = document.getElementById('nextMissionTime');
         const headerCountdownTimerEl = document.getElementById('headerCountdownTimer');
         const headerNextMissionTimeEl = document.getElementById('headerNextMissionTime');
         const missionTextEl = document.getElementById('missionText');
@@ -188,8 +186,6 @@
 
             const countdownText = `${hours}:${minutes}:${seconds}`;
             const nextMissionText = `明日 00:00 に更新`;
-            countdownTimerEl.textContent = countdownText;
-            nextMissionTimeEl.textContent = nextMissionText;
             headerCountdownTimerEl.textContent = countdownText;
             headerNextMissionTimeEl.textContent = nextMissionText;
 
