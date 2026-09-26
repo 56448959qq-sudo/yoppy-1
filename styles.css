@@ -1,32 +1,41 @@
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: #fffaf0;
+            background-color: #f8fafc;
             color: #1e293b;
         }
         .brand-background {
-            background:
-                radial-gradient(circle at 8% 8%, rgba(251, 146, 60, 0.13) 0 10%, transparent 10.5%),
-                radial-gradient(circle at 92% 30%, rgba(236, 72, 153, 0.1) 0 8%, transparent 8.5%),
-                #fffaf0;
+            background-color: #f8fafc;
         }
         .mission-card {
-            background: linear-gradient(145deg, #ffffff 45%, #fff7ed);
-            box-shadow: 10px 10px 20px #fed7aa, -10px -10px 20px #ffffff;
-            border: 1px solid rgba(251, 146, 60, 0.16);
+            background: #ffffff;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+            border: 1px solid #e2e8f0;
         }
-        .mission-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 76px;
-            height: 76px;
-            background:
-                linear-gradient(#f9a8d4 0 0) 0 0 / 25px 25px no-repeat,
-                linear-gradient(#facc15 0 0) 25px 25px / 25px 25px no-repeat,
-                linear-gradient(#4ade80 0 0) 50px 50px / 25px 25px no-repeat;
-            opacity: 0.72;
-            pointer-events: none;
+        .app-tab {
+            color: #64748b;
+            border-bottom: 2px solid transparent;
+            transition: color 0.15s ease, border-color 0.15s ease;
+        }
+        .app-tab:hover {
+            color: #0f766e;
+        }
+        .app-tab[aria-selected="true"] {
+            color: #0f766e;
+            border-bottom-color: #0f766e;
+        }
+        .app-tab:focus-visible {
+            outline: 2px solid #14b8a6;
+            outline-offset: -2px;
+        }
+        .streak-summary {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+        }
+        .content-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.035);
         }
         .optional-mission-card {
             transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -37,10 +46,10 @@
         }
         .leaderboard-card {
             padding: 1.25rem;
-            border: 1px solid rgba(20, 184, 166, 0.18);
-            border-radius: 1.5rem;
-            background: linear-gradient(145deg, #ffffff, #f0fdfa);
-            box-shadow: 0 8px 20px rgba(20, 184, 166, 0.1);
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.035);
         }
         .leaderboard-badge {
             padding: 0.3rem 0.6rem;
@@ -51,7 +60,7 @@
             font-weight: 700;
         }
         .leaderboard-summary {
-            background: linear-gradient(110deg, #ccfbf1, #fef3c7);
+            background: #f0fdfa;
         }
         .leaderboard-you-icon {
             display: flex;
@@ -68,12 +77,12 @@
             align-items: center;
             gap: 0.75rem;
             padding: 0.65rem 0.75rem;
-            border-radius: 0.9rem;
-            background-color: rgba(255, 255, 255, 0.78);
+            border-radius: 0.75rem;
+            background-color: #f8fafc;
         }
         .leaderboard-row.is-you {
-            background-color: #fff7ed;
-            outline: 2px solid #fed7aa;
+            background-color: #f0fdfa;
+            outline: 1px solid #99f6e4;
         }
         .leaderboard-rank {
             width: 1.5rem;

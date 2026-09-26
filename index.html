@@ -51,7 +51,7 @@
     </div>
 
     <!-- メインアプリ画面（プロフ設定後に表示） -->
-    <div id="mainScreen" class="w-full max-w-md flex-1 flex flex-col hidden">
+    <div id="mainScreen" class="w-full max-w-2xl flex-1 flex flex-col hidden">
         <!-- ヘッダーエリア -->
         <header class="w-full flex justify-between items-center py-4 mb-2">
             <h1 class="text-2xl font-bold text-teal-700 flex items-center">
@@ -65,29 +65,45 @@
             </div>
         </header>
 
-        <div class="w-full bg-white rounded-2xl shadow-md border-2 border-orange-200 px-4 py-3 mb-4 flex items-center justify-between">
-            <div class="flex items-center text-orange-700">
-                <i class="fa-solid fa-hourglass-half mr-3 text-xl text-orange-500" aria-hidden="true"></i>
-                <div>
-                    <p class="text-xs font-bold">ミッションの更新まで</p>
-                    <p id="headerNextMissionTime" class="text-[11px] text-gray-500 mt-0.5">次回更新時刻を計算中...</p>
-                </div>
-            </div>
-            <p id="headerCountdownTimer" class="text-2xl font-bold text-orange-600 tabular-nums">--:--:--</p>
-        </div>
-
-        <!-- プロフィール変更リンク -->
-        <div class="w-full flex justify-end mb-4">
-            <button id="resetProfileBtn" class="text-xs text-teal-500 hover:text-teal-700 underline bg-transparent border-none cursor-pointer flex items-center">
-                <i class="fa-solid fa-gear mr-1"></i>属性を変更する
+        <nav class="app-tabs mb-6 flex border-b border-gray-200" role="tablist" aria-label="メインメニュー">
+            <button class="app-tab flex-1 px-2 py-3 text-sm font-bold" id="homeTab" type="button" role="tab" aria-selected="true" aria-controls="homePanel">
+                <i class="fa-solid fa-house mr-1.5" aria-hidden="true"></i>ホーム
             </button>
-        </div>
+            <button class="app-tab flex-1 px-2 py-3 text-sm font-bold" id="rankingTab" type="button" role="tab" aria-selected="false" aria-controls="rankingPanel" tabindex="-1">
+                <i class="fa-solid fa-ranking-star mr-1.5" aria-hidden="true"></i>ランキング
+            </button>
+            <button class="app-tab flex-1 px-2 py-3 text-sm font-bold" id="profileTab" type="button" role="tab" aria-selected="false" aria-controls="profilePanel" tabindex="-1">
+                <i class="fa-solid fa-user mr-1.5" aria-hidden="true"></i><span class="hidden sm:inline">プロフィール・</span>記録
+            </button>
+        </nav>
 
         <!-- メインコンテンツ（ミッションエリア） -->
-        <main class="w-full flex-1 flex flex-col">
+        <main class="w-full flex-1">
+            <section id="homePanel" role="tabpanel" aria-labelledby="homeTab">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <div class="flex items-center text-orange-700">
+                        <i class="fa-solid fa-hourglass-half mr-2 text-orange-500" aria-hidden="true"></i>
+                        <div>
+                            <p class="text-xs font-bold">ミッションの更新まで</p>
+                            <p id="headerNextMissionTime" class="text-[11px] text-gray-500 mt-0.5">次回更新時刻を計算中...</p>
+                        </div>
+                    </div>
+                    <p id="headerCountdownTimer" class="text-xl font-bold text-orange-600 tabular-nums">--:--:--</p>
+                </div>
+
+                <section class="streak-summary mb-4 flex items-center justify-between rounded-xl px-4 py-3" aria-label="ストリーク">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-fire text-xl text-orange-500 mr-3" aria-hidden="true"></i>
+                        <div>
+                            <p id="streakCount" class="text-sm font-bold text-gray-800">0日連続達成</p>
+                            <p id="streakReward" class="text-xs text-gray-500 mt-0.5">あと3日で +10pt ボーナス</p>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-orange-600">ストリーク</span>
+                </section>
             
             <!-- ミッションカード -->
-            <div class="mission-card rounded-3xl p-6 relative overflow-hidden mb-8">
+            <div class="mission-card rounded-2xl p-5 sm:p-7 relative overflow-hidden mb-6">
                 <!-- 達成済みオーバーレイ -->
                 <div id="completedOverlay" class="absolute inset-0 z-10 flex flex-col justify-center items-center completed-overlay hidden">
                     <div class="bg-white p-4 rounded-full shadow-lg mb-4">
@@ -103,18 +119,18 @@
                 </div>
 
                 <div class="text-center my-6">
-                    <i id="missionIcon" class="fa-solid fa-gift text-6xl text-orange-400 mb-6"></i>
+                    <i id="missionIcon" class="fa-solid fa-gift text-5xl text-orange-400 mb-5"></i>
                     <h2 id="missionText" class="text-xl font-bold text-gray-800 mb-3 leading-snug">ミッションをロード中...</h2>
                     <p id="missionDesc" class="text-sm text-gray-500 leading-relaxed">少々お待ちください...</p>
                 </div>
 
-                <button id="completeBtn" class="btn-primary w-full text-white font-bold py-4 rounded-2xl text-lg shadow-lg flex justify-center items-center space-x-2">
+                <button id="completeBtn" class="btn-primary w-full text-white font-bold py-3.5 rounded-xl text-base shadow-sm flex justify-center items-center space-x-2">
                     <i class="fa-solid fa-check-circle"></i>
                     <span>ミッション達成！</span>
                 </button>
             </div>
 
-            <section id="optionalMissionsSection" class="w-full mb-8 hidden" aria-labelledby="optionalMissionsTitle">
+            <section id="optionalMissionsSection" class="w-full mb-6 hidden" aria-labelledby="optionalMissionsTitle">
                 <div class="flex items-center justify-between mb-3">
                     <h3 id="optionalMissionsTitle" class="text-lg font-bold text-gray-700 flex items-center">
                         <i class="fa-solid fa-sparkles mr-2 text-pink-500"></i> オプショナルミッション
@@ -124,8 +140,10 @@
                 <p class="text-xs text-gray-500 mb-3">今日のミッション達成おめでとう！余裕があれば、もう一歩チャレンジしてみましょう。</p>
                 <div id="optionalMissionsList" class="space-y-3"></div>
             </section>
+            </section>
 
-            <section class="leaderboard-card w-full mb-8" aria-labelledby="leaderboardTitle">
+            <section id="rankingPanel" class="hidden" role="tabpanel" aria-labelledby="rankingTab" tabindex="0">
+            <section class="leaderboard-card w-full mb-6" aria-labelledby="leaderboardTitle">
                 <div class="flex items-center justify-between mb-4">
                     <h3 id="leaderboardTitle" class="text-lg font-bold text-gray-700 flex items-center">
                         <i class="fa-solid fa-ranking-star mr-2 text-yellow-500"></i> みんなのランキング
@@ -150,19 +168,34 @@
                 <div id="leaderboardList" class="space-y-2"></div>
                 <p class="text-[10px] text-gray-400 mt-3 text-center">ランキングは現在この端末でのデモ表示です</p>
             </section>
+            </section>
 
-            <div class="w-full pb-8">
-                <h3 class="text-lg font-bold text-gray-700 mb-3 flex items-center">
-                    <i class="fa-solid fa-clock-rotate-left mr-2 text-pink-500"></i> 最近の記録
-                </h3>
-                <ul id="historyList" class="space-y-3">
+            <section id="profilePanel" class="hidden space-y-5" role="tabpanel" aria-labelledby="profileTab" tabindex="0">
+                <section class="content-card p-5 sm:p-6" aria-labelledby="profileTitle">
+                    <div class="flex items-center justify-between gap-3">
+                        <div>
+                            <h2 id="profileTitle" class="text-lg font-bold text-gray-800">プロフィール</h2>
+                            <p id="profileSummary" class="text-sm text-gray-500 mt-2"></p>
+                        </div>
+                        <button id="resetProfileBtn" class="shrink-0 px-4 py-2 rounded-lg border border-gray-200 text-sm font-bold text-teal-700 hover:bg-teal-50">
+                            <i class="fa-solid fa-gear mr-1" aria-hidden="true"></i>変更
+                        </button>
+                    </div>
+                </section>
+
+                <section class="content-card p-5 sm:p-6" aria-labelledby="historyTitle">
+                    <h2 id="historyTitle" class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fa-solid fa-clock-rotate-left mr-2 text-teal-600"></i>最近の記録
+                    </h2>
+                    <ul id="historyList" class="space-y-2">
                     <!-- 履歴アイテムがここに入る -->
-                </ul>
-                <div id="emptyHistory" class="text-center py-6 bg-white rounded-2xl border border-dashed border-gray-300">
-                    <i class="fa-solid fa-seedling text-3xl text-gray-300 mb-2"></i>
-                    <p class="text-sm text-gray-500">まだ履歴がありません。<br>今日のミッションを達成してみましょう！</p>
-                </div>
-            </div>
+                    </ul>
+                    <div id="emptyHistory" class="text-center py-6 text-gray-500">
+                        <i class="fa-solid fa-seedling text-2xl text-gray-300 mb-2"></i>
+                        <p class="text-sm">まだ履歴がありません。<br>今日のミッションを達成してみましょう！</p>
+                    </div>
+                </section>
+            </section>
         </main>
     </div>
 

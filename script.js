@@ -37,6 +37,10 @@
             { id: 103, text: "使っていない照明を消して節電する", desc: "身近なエコアクションから、持続可能な暮らしを始めましょう。", icon: "fa-lightbulb", points: 5 }
         ];
 
+        const STREAK_MILESTONE_DAYS = 3;
+        const STREAK_BONUS_POINTS = 10;
+        let lastObservedDate = getTodayString();
+
         const leaderboardParticipants = [
             { name: "みどりさん", points: 120, icon: "🌱" },
             { name: "ひなたさん", points: 95, icon: "☀️" },
@@ -62,9 +66,13 @@
         const userGenderSelect = document.getElementById('userGender');
         const saveProfileBtn = document.getElementById('saveProfileBtn');
         const resetProfileBtn = document.getElementById('resetProfileBtn');
+        const profileSummaryEl = document.getElementById('profileSummary');
+        const tabs = [...document.querySelectorAll('[role="tab"]')];
         
         const totalPointsEl = document.getElementById('totalPoints');
         const dateDisplayEl = document.getElementById('dateDisplay');
+        const streakCountEl = document.getElementById('streakCount');
+        const streakRewardEl = document.getElementById('streakReward');
         const headerCountdownTimerEl = document.getElementById('headerCountdownTimer');
         const headerNextMissionTimeEl = document.getElementById('headerNextMissionTime');
         const missionTextEl = document.getElementById('missionText');
@@ -100,9 +108,11 @@
                 userGenderSelect.value = appState.profile.gender;
                 saveProfileBtn.disabled = false;
 
+                renderProfileSummary();
                 updateDateDisplay();
                 checkDailyMission();
                 renderPoints();
+                renderStreak();
                 renderLeaderboard();
                 renderHistory();
             }
@@ -130,9 +140,11 @@
             // 画面切り替えとメイン処理の実行
             profileScreen.classList.add('hidden');
             mainScreen.classList.remove('hidden');
+            renderProfileSummary();
             updateDateDisplay();
             checkDailyMission();
             renderPoints();
+            renderStreak();
             renderHistory();
         });
 
@@ -143,6 +155,40 @@
                 mainScreen.classList.add('hidden');
             }
         });
+
+        function activateTab(tab) {
+            tabs.forEach(item => {
+                const isActive = item === tab;
+                item.setAttribute('aria-selected', String(isActive));
+                item.tabIndex = isActive ? 0 : -1;
+                document.getElementById(item.getAttribute('aria-controls')).classList.toggle('hidden', !isActive);
+            });
+        }
+
+        tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab)));
+        document.querySelector('[role="tablist"]').addEventListener('keydown', event => {
+            if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+            event.preventDefault();
+            const direction = event.key === 'ArrowRight' ? 1 : -1;
+            const currentIndex = tabs.indexOf(document.activeElement);
+            const nextIndex = (currentIndex + direction + tabs.length) % tabs.length;
+            tabs[nextIndex].focus();
+            activateTab(tabs[nextIndex]);
+        });
+
+        function renderProfileSummary() {
+            const stages = {
+                teen: '中学生・高校生',
+                college: '大学生・専門学生',
+                adult: '社会人・大人'
+            };
+            const genders = {
+                all: '回答しない / その他',
+                female: '女性',
+                male: '男性'
+            };
+            profileSummaryEl.textContent = `${stages[appState.profile.stage] || '未設定'} ・ ${genders[appState.profile.gender] || '未設定'}`;
+        }
 
         function loadState() {
             const savedState = localStorage.getItem('socialGoodAppState');
@@ -161,6 +207,36 @@
             // JST (日本時間) を考慮したい場合は、タイムゾーンを調整するなどの処理が必要ですが、
             // 今回はブラウザのローカル時間を使用します。
             return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        }
+
+        function getPreviousDateString(dateString) {
+            const [year, month, day] = dateString.split('-').map(Number);
+            const date = new Date(year, month - 1, day - 1);
+            return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        }
+
+        function getCurrentStreak() {
+            const completedDates = new Set(appState.history.map(item => item.date));
+            let date = getTodayString();
+            if (!completedDates.has(date)) {
+                date = getPreviousDateString(date);
+            }
+            if (!completedDates.has(date)) return 0;
+
+            let streak = 0;
+            while (completedDates.has(date)) {
+                streak += 1;
+                date = getPreviousDateString(date);
+            }
+            return streak;
+        }
+
+        function renderStreak() {
+            const streak = getCurrentStreak();
+            const daysUntilBonus = STREAK_MILESTONE_DAYS - (streak % STREAK_MILESTONE_DAYS);
+
+            streakCountEl.textContent = `${streak}日連続達成`;
+            streakRewardEl.textContent = `あと${daysUntilBonus}日で +${STREAK_BONUS_POINTS}pt ボーナス`;
         }
 
         function updateDateDisplay() {
@@ -189,9 +265,12 @@
             headerCountdownTimerEl.textContent = countdownText;
             headerNextMissionTimeEl.textContent = nextMissionText;
 
-            if (remainingMilliseconds === 0) {
+            const todayString = getTodayString();
+            if (todayString !== lastObservedDate) {
+                lastObservedDate = todayString;
                 updateDateDisplay();
                 checkDailyMission();
+                renderStreak();
             }
         }
 
@@ -341,7 +420,7 @@
 
             recentHistory.forEach(item => {
                 const li = document.createElement('li');
-                li.className = 'flex justify-between items-center bg-white p-3 rounded-lg border border-orange-100';
+                li.className = 'flex justify-between items-center gap-3 bg-white p-3 rounded-lg border border-gray-100';
                 li.innerHTML = `
                     <div class="flex items-center">
                         <div class="bg-green-100 p-2 rounded-full mr-3">
@@ -352,7 +431,10 @@
                             <p class="text-xs text-gray-400">${item.date}</p>
                         </div>
                     </div>
-                    <span class="font-bold text-orange-600 text-sm">+${item.points}</span>
+                    <span class="text-right font-bold text-orange-600 text-sm">
+                        +${item.points}
+                        ${item.bonusPoints ? `<span class="block text-[10px] text-pink-600">ストリーク +${item.bonusPoints}</span>` : ''}
+                    </span>
                 `;
                 historyListEl.appendChild(li);
             });
@@ -363,16 +445,21 @@
         completeBtn.addEventListener('click', () => {
             const todayStr = getTodayString();
             const currentMission = getMissionById(appState.currentMissionId);
+            if (!currentMission || appState.history.some(item => item.date === todayStr)) return;
 
-            // 状態の更新
-            appState.totalPoints += currentMission.points;
+            const newStreak = getCurrentStreak() + 1;
+            const bonusPoints = newStreak % STREAK_MILESTONE_DAYS === 0 ? STREAK_BONUS_POINTS : 0;
+            const earnedPoints = currentMission.points + bonusPoints;
+
+            appState.totalPoints += earnedPoints;
             appState.lastPlayedDate = todayStr; // 今日クリアしたことを記録
             
             appState.history.push({
                 date: todayStr,
                 missionId: currentMission.id,
                 text: currentMission.text,
-                points: currentMission.points
+                points: earnedPoints,
+                bonusPoints
             });
 
             saveState();
@@ -383,6 +470,7 @@
             // 少し遅らせて画面を切り替える
             setTimeout(() => {
                 renderPoints();
+                renderStreak();
                 renderHistory();
                 showCompletedState();
             }, 800);
