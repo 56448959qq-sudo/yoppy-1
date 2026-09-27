@@ -1,31 +1,39 @@
         // --- 1. アプリのデータ（ミッションリスト） ---
-        // targetStage: 'teen'(中高生), 'college'(大学生), 'adult'(社会人), 'all'(全員)
+        // targetStage: 'teen'(中高生), 'youngAdult'(20代〜30代), 'adult'(社会人), 'midlife'(40代〜50代), 'all'(全員)
         // targetGender: 'female'(女性), 'male'(男性), 'all'(全員/その他)
         const missions = [
             // 【全員共通】
             { id: 1, text: "地域の挨拶運動：すれ違う人に挨拶をしてみる", desc: "小さなコミュニケーションが、誰かの孤立感を和らげる第一歩になります。", icon: "fa-comments", points: 10, targetStage: ['all'], targetGender: ['all'] },
             { id: 2, text: "離れて暮らす家族や親戚に短いメッセージを送る", desc: "「元気？」の一言が、つながりを感じるきっかけになります。", icon: "fa-mobile-screen", points: 10, targetStage: ['all'], targetGender: ['all'] },
-            { id: 3, text: "高齢者の方に席を譲る、またはドアを開けてあげる", desc: "世代を超えた温かい配慮が、暮らしやすいコミュニティを作ります。", icon: "fa-person-cane", points: 10, targetStage: ['all'], targetGender: ['all'] },
+            { id: 3, text: "yoppyをまだ使っていない人に勧める", desc: "みんなでユーザー数を増やそう！", icon: "fa-person-cane", points: 10, targetStage: ['all'], targetGender: ['all'] },
             { id: 9, text: "今日あった「良かったこと」を誰かにシェアする", desc: "ポジティブな感情の共有は、周りの人の幸福度（ウェルビーイング）も高めます。", icon: "fa-face-smile-beam", points: 10, targetStage: ['all'], targetGender: ['all'] },
             { id: 10, text: "自分とは異なる意見や背景を持つ人の話を最後まで聞く", desc: "多様な価値観を受容する「寛容性」を育むための第一歩です。", icon: "fa-ear-listen", points: 15, targetStage: ['all'], targetGender: ['all'] },
 
-            // 【中高生・大学生向け】
+            // 【中高生・20代〜30代向け】
             { id: 11, text: "学校で、普段あまり話さないクラスメイトに声をかける", desc: "学校内の小さな孤立を防ぎ、居心地の良いクラスを作ります。", icon: "fa-school", points: 15, targetStage: ['teen'], targetGender: ['all'] },
-            { id: 12, text: "SNSで、誰かの投稿にポジティブで優しいコメントを残す", desc: "オンライン上のウェルビーイングを高め、誹謗中傷を防ぐ一歩になります。", icon: "fa-heart", points: 10, targetStage: ['teen', 'college'], targetGender: ['all'] },
-            { id: 13, text: "「進路」や「将来」について、友達と多様な選択肢があることを話す", desc: "「こうあるべき」という無意識のプレッシャー（偏見）を減らします。", icon: "fa-map-signs", points: 15, targetStage: ['teen', 'college'], targetGender: ['all'] },
+            { id: 12, text: "SNSで見た情報を1つファクトチェックする", desc: "オンライン上で広がる無意識な変更の対策になります。", icon: "fa-heart", points: 10, targetStage: ['teen', 'youngAdult'], targetGender: ['all'] },
+            { id: 13, text: "「地域の高齢者に元気に挨拶する", desc: "世代を超えた温かい配慮が、暮らしやすいコミュニティを作ります。", icon: "fa-map-signs", points: 15, targetStage: ['teen', 'youngAdult'], targetGender: ['all'] },
 
             // 【社会人向け】
             { id: 14, text: "職場で育休や時短勤務をしている同僚に、ねぎらいの言葉をかける", desc: "子育てと仕事の両立を応援し、働きやすい環境を作ります。", icon: "fa-briefcase", points: 15, targetStage: ['adult'], targetGender: ['all'] },
             { id: 15, text: "後輩や同僚の意見を否定せずに、まずは「いいね」と受け入れる", desc: "心理的安全性を高め、職場のウェルビーイングを向上させます。", icon: "fa-handshake-angle", points: 15, targetStage: ['adult'], targetGender: ['all'] },
             { id: 16, text: "家事や育児の分担について、家族とポジティブに話す", desc: "協力し合うことで、家庭内のウェルビーイングが高まります。", icon: "fa-house-user", points: 15, targetStage: ['adult'], targetGender: ['all'] },
 
-            // 【女性の健康・ボディイメージ・偏見の解消】
+            // 【全員向け：ボディイメージ】
             { id: 6, text: "SNSで「見た目」に関する否定的な発言をしない", desc: "ルッキズム（外見至上主義）への偏見をなくし、多様な美しさを尊重しましょう。", icon: "fa-ban", points: 10, targetStage: ['all'], targetGender: ['all'] },
-            { id: 7, text: "自分自身の体を労わる時間（リラックス等）を5分作る", desc: "心身の健康（特に女性特有の健康課題）に向き合い、自分を大切にする時間です。", icon: "fa-spa", points: 10, targetStage: ['all'], targetGender: ['female', 'all'] },
+
+            // 【女性向け：健康】
+            { id: 7, text: "自分自身の体を労わる時間（リラックス等）を5分作る", desc: "心身の健康（特に女性特有の健康課題）に向き合い、自分を大切にする時間です。", icon: "fa-spa", points: 10, targetStage: ['all'], targetGender: ['female'] },
+            { id: 21, text: "女性の健康について、「今の自分が知りたいことは何だろう？」と考えてみる", desc: "気になることを振り返り、必要なら信頼できる情報源や医療専門職に相談するきっかけにしましょう。", icon: "fa-circle-question", points: 10, targetStage: ['all'], targetGender: ['female'] },
             
             // 【男性向け・ジェンダーバイアス】
             { id: 8, text: "「男だから/女だから」という言葉を使わずに会話する", desc: "無意識のジェンダーバイアス（偏見）に気づき、多様性を認め合うアクションです。", icon: "fa-venus-mars", points: 15, targetStage: ['all'], targetGender: ['all'] },
-            { id: 17, text: "「男らしさ」に縛られず、自分の弱さや悩みを信頼できる人に話す", desc: "「強くいなければ」という男性特有の孤独感やプレッシャーを和らげる大切な一歩です。", icon: "fa-user-shield", points: 15, targetStage: ['teen', 'college', 'adult'], targetGender: ['male'] },
+            { id: 17, text: "「男らしさ」に縛られず、自分の弱さや悩みを信頼できる人に話す", desc: "「強くいなければ」という男性特有の孤独感やプレッシャーを和らげる大切な一歩です。", icon: "fa-user-shield", points: 15, targetStage: ['teen', 'youngAdult', 'adult', 'midlife'], targetGender: ['male'] },
+
+            // 【ミドル世代向け：フレイル予防】
+            { id: 18, text: "今日は10分歩いてみる", desc: "無理のない範囲で体を動かす習慣が、将来の健康づくりにつながります。", icon: "fa-person-walking", points: 10, targetStage: ['midlife'], targetGender: ['all'] },
+            { id: 19, text: "近所の人と一言会話する", desc: "身近な人とのつながりを保つことも、心身の健康を支える大切な一歩です。", icon: "fa-comments", points: 10, targetStage: ['midlife'], targetGender: ['all'] },
+            { id: 20, text: "椅子に座ったまま、足首をゆっくり回してみる", desc: "日常の中で無理なく体を動かすきっかけをつくりましょう。", icon: "fa-person", points: 10, targetStage: ['midlife'], targetGender: ['all'] },
 
             // 【子育て世代への支援・寛容性】
             { id: 4, text: "電車や街で、子供連れの人に温かい眼差しを向ける", desc: "子育てのプレッシャーを感じている人に、安心感を与えることができます。", icon: "fa-baby", points: 10, targetStage: ['all'], targetGender: ['all'] }
@@ -42,10 +50,10 @@
         let lastObservedDate = getTodayString();
 
         const leaderboardParticipants = [
-            { name: "みどりさん", points: 120, icon: "🌱" },
-            { name: "ひなたさん", points: 95, icon: "☀️" },
-            { name: "そらさん", points: 80, icon: "🌈" },
-            { name: "あおいさん", points: 60, icon: "🌿" }
+            { name: "かめさん", points: 120, icon: "🐢" },
+            { name: "かもめさん", points: 95, icon: "🦆" },
+            { name: "ぞうさん", points: 80, icon: "🐘" },
+            { name: "へびさん", points: 60, icon: "🐍" }
         ];
 
         // --- 2. 状態管理 (In-Memory State for simple version) ---
@@ -179,8 +187,9 @@
         function renderProfileSummary() {
             const stages = {
                 teen: '中学生・高校生',
-                college: '大学生・専門学生',
-                adult: '社会人・大人'
+                youngAdult: '20代〜30代',
+                adult: '社会人・大人',
+                midlife: 'ミドル世代（40代〜50代）'
             };
             const genders = {
                 all: '回答しない / その他',
@@ -194,6 +203,9 @@
             const savedState = localStorage.getItem('socialGoodAppState');
             if (savedState) {
                 appState = { ...appState, ...JSON.parse(savedState) };
+                if (appState.profile && appState.profile.stage === 'college') {
+                    appState.profile.stage = 'youngAdult';
+                }
             }
         }
 
@@ -277,14 +289,16 @@
         // 毎日異なるミッションを設定するか、既にクリアしているかチェック
         function checkDailyMission() {
             const todayStr = getTodayString();
+            const userStage = appState.profile ? appState.profile.stage : 'all';
+            const userGender = appState.profile ? appState.profile.gender : 'all';
+            const currentMission = missions.find(mission => mission.id === appState.currentMissionId);
+            const currentMissionMatchesProfile = currentMission &&
+                (currentMission.targetStage.includes('all') || currentMission.targetStage.includes(userStage)) &&
+                (currentMission.targetGender.includes('all') || currentMission.targetGender.includes(userGender));
             
-            // 日付が変わっているか、または初めてのプレイ（プロフ変更直後など）の場合
-            if (appState.lastPlayedDate !== todayStr || !appState.currentMissionId) {
+            // 日付変更、初回起動、属性変更、保存済みミッションの属性不一致時に選び直す
+            if (appState.lastPlayedDate !== todayStr || !appState.currentMissionId || !currentMissionMatchesProfile) {
                 
-                // ユーザーの属性を取得
-                const userStage = appState.profile ? appState.profile.stage : 'all';
-                const userGender = appState.profile ? appState.profile.gender : 'all';
-
                 // 属性に合致するミッションをフィルタリング
                 const suitableMissions = missions.filter(m => {
                     const matchStage = m.targetStage.includes('all') || m.targetStage.includes(userStage);
@@ -293,8 +307,7 @@
                 });
 
                 // フィルタリングされた中からランダムに選ぶ
-                const missionPool = suitableMissions.length > 0 ? suitableMissions : missions;
-                const randomMission = missionPool[Math.floor(Math.random() * missionPool.length)];
+                const randomMission = suitableMissions[Math.floor(Math.random() * suitableMissions.length)];
                 
                 appState.currentMissionId = randomMission.id;
                 
