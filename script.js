@@ -42,7 +42,7 @@
         const optionalMissions = [
             { id: 101, text: "身近な場所のゴミを1つ拾う", desc: "小さな行動で、みんなが気持ちよく過ごせる場所をつくります。", icon: "fa-recycle", points: 5 },
             { id: 102, text: "誰かの良いところを見つけて伝える", desc: "温かい言葉を贈ると、自分も相手も前向きな気持ちになれます。", icon: "fa-heart", points: 5 },
-            { id: 103, text: "使っていない照明を消して節電する", desc: "身近なエコアクションから、持続可能な暮らしを始めましょう。", icon: "fa-lightbulb", points: 5 }
+            { id: 103, text: "yoppyをまだ使っていない人に勧める", desc: "みんなでユーザー数を増やそう！", icon: "fa-lightbulb", points: 5 }
         ];
 
         const STREAK_MILESTONE_DAYS = 3;
