@@ -4,7 +4,7 @@
         const missions = [
             // 【全員共通】
             { id: 1, text: "地域の挨拶運動：すれ違う人に挨拶をしてみる", desc: "小さなコミュニケーションが、誰かの孤立感を和らげる第一歩になります。", icon: "fa-comments", points: 10, targetStage: ['all'], targetGender: ['all'] },
-            { id: 2, text: "離れて暮らす家族や親戚に短いメッセージを送る", desc: "「元気？」の一言が、つながりを感じるきっかけになります。", icon: "fa-mobile-screen", points: 10, targetStage: ['all'], targetGender: ['all'] },
+            { id: 2, text: "離れて暮らす家族、親戚、または知人に短いメッセージを送る", desc: "「元気？」の一言が、つながりを感じるきっかけになります。", icon: "fa-mobile-screen", points: 10, targetStage: ['all'], targetGender: ['all'] },
             { id: 3, text: "yoppyをまだ使っていない人に勧める", desc: "みんなでユーザー数を増やそう！", icon: "fa-person-cane", points: 10, targetStage: ['all'], targetGender: ['all'] },
             { id: 9, text: "今日あった「良かったこと」を誰かにシェアする", desc: "ポジティブな感情の共有は、周りの人の幸福度（ウェルビーイング）も高めます。", icon: "fa-face-smile-beam", points: 10, targetStage: ['all'], targetGender: ['all'] },
             { id: 10, text: "自分とは異なる意見や背景を持つ人の話を最後まで聞く", desc: "多様な価値観を受容する「寛容性」を育むための第一歩です。", icon: "fa-ear-listen", points: 15, targetStage: ['all'], targetGender: ['all'] },
@@ -12,7 +12,7 @@
             // 【中高生・20代〜30代向け】
             { id: 11, text: "学校で、普段あまり話さないクラスメイトに声をかける", desc: "学校内の小さな孤立を防ぎ、居心地の良いクラスを作ります。", icon: "fa-school", points: 15, targetStage: ['teen'], targetGender: ['all'] },
             { id: 12, text: "SNSで見た情報を1つファクトチェックする", desc: "オンライン上で広がる無意識な変更の対策になります。", icon: "fa-heart", points: 10, targetStage: ['teen', 'youngAdult'], targetGender: ['all'] },
-            { id: 13, text: "「地域の高齢者に元気に挨拶する", desc: "世代を超えた温かい配慮が、暮らしやすいコミュニティを作ります。", icon: "fa-map-signs", points: 15, targetStage: ['teen', 'youngAdult'], targetGender: ['all'] },
+            { id: 13, text: "地域の高齢者に元気に挨拶する", desc: "世代を超えた温かい配慮が、暮らしやすいコミュニティを作ります。", icon: "fa-map-signs", points: 15, targetStage: ['teen', 'youngAdult'], targetGender: ['all'] },
 
             // 【社会人向け】
             { id: 14, text: "職場で育休や時短勤務をしている同僚に、ねぎらいの言葉をかける", desc: "子育てと仕事の両立を応援し、働きやすい環境を作ります。", icon: "fa-briefcase", points: 15, targetStage: ['adult'], targetGender: ['all'] },
@@ -28,7 +28,7 @@
             
             // 【男性向け・ジェンダーバイアス】
             { id: 8, text: "「男だから/女だから」という言葉を使わずに会話する", desc: "無意識のジェンダーバイアス（偏見）に気づき、多様性を認め合うアクションです。", icon: "fa-venus-mars", points: 15, targetStage: ['all'], targetGender: ['all'] },
-            { id: 17, text: "「男らしさ」に縛られず、自分の弱さや悩みを信頼できる人に話す", desc: "「強くいなければ」という男性特有の孤独感やプレッシャーを和らげる大切な一歩です。", icon: "fa-user-shield", points: 15, targetStage: ['teen', 'youngAdult', 'adult', 'midlife'], targetGender: ['male'] },
+            { id: 17, text: "自分の悩みを信頼できる人に話す", desc: "「強くいなければ」という男性特有の孤独感やプレッシャーを和らげる大切な一歩です。", icon: "fa-user-shield", points: 15, targetStage: ['teen', 'youngAdult', 'adult', 'midlife'], targetGender: ['male'] },
 
             // 【ミドル世代向け：フレイル予防】
             { id: 18, text: "今日は10分歩いてみる", desc: "無理のない範囲で体を動かす習慣が、将来の健康づくりにつながります。", icon: "fa-person-walking", points: 10, targetStage: ['midlife'], targetGender: ['all'] },
@@ -36,7 +36,7 @@
             { id: 20, text: "椅子に座ったまま、足首をゆっくり回してみる", desc: "日常の中で無理なく体を動かすきっかけをつくりましょう。", icon: "fa-person", points: 10, targetStage: ['midlife'], targetGender: ['all'] },
 
             // 【子育て世代への支援・寛容性】
-            { id: 4, text: "電車や街で、子供連れの人に温かい眼差しを向ける", desc: "子育てのプレッシャーを感じている人に、安心感を与えることができます。", icon: "fa-baby", points: 10, targetStage: ['all'], targetGender: ['all'] }
+            { id: 4, text: "今日、身近な人のために、いつもより一つ多く何かをしてみよう。", desc: "身近な人たちに、安心感を与えることができます。", icon: "fa-baby", points: 10, targetStage: ['all'], targetGender: ['all'] }
         ];
 
         const optionalMissions = [
