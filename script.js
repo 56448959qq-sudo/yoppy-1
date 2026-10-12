@@ -3,73 +3,70 @@
         // targetGender: 'female'(女性), 'male'(男性), 'all'(全員/その他)
         const missions = [
             // 【全員共通】
-            { id: 1, text: "地域の挨拶運動：すれ違う人に挨拶をしてみる", desc: "小さなコミュニケーションが、誰かの孤立感を和らげる第一歩になります。", icon: "fa-comments", points: 10, targetStage: ['all'], targetGender: ['all'] },
-            { id: 2, text: "離れて暮らす家族、親戚、または知人に短いメッセージを送る", desc: "「元気？」の一言が、つながりを感じるきっかけになります。", icon: "fa-mobile-screen", points: 10, targetStage: ['all'], targetGender: ['all'] },
-            { id: 3, text: "yoppyをまだ使っていない人に勧める", desc: "みんなでユーザー数を増やそう！", icon: "fa-person-cane", points: 10, targetStage: ['all'], targetGender: ['all'] },
-            { id: 9, text: "今日あった「良かったこと」を誰かにシェアする", desc: "ポジティブな感情の共有は、周りの人の幸福度（ウェルビーイング）も高めます。", icon: "fa-face-smile-beam", points: 10, targetStage: ['all'], targetGender: ['all'] },
-            { id: 10, text: "自分とは異なる意見や背景を持つ人の話を最後まで聞く", desc: "多様な価値観を受容する「寛容性」を育むための第一歩です。", icon: "fa-ear-listen", points: 15, targetStage: ['all'], targetGender: ['all'] },
+            { id: 1, text: "地域の挨拶運動：すれ違う人に挨拶をしてみる", desc: "小さなコミュニケーションが、誰かの孤立感を和らげる第一歩になります。", icon: "fa-comments", targetStage: ['all'], targetGender: ['all'] },
+            { id: 2, text: "離れて暮らす家族、親戚、または知人に短いメッセージを送る", desc: "「元気？」の一言が、つながりを感じるきっかけになります。", icon: "fa-mobile-screen", targetStage: ['all'], targetGender: ['all'] },
+            { id: 3, text: "yoppyをまだ使っていない人に勧める", desc: "みんなでユーザー数を増やそう！", icon: "fa-person-cane", targetStage: ['all'], targetGender: ['all'] },
+            { id: 9, text: "今日あった「良かったこと」を誰かにシェアする", desc: "ポジティブな感情の共有は、周りの人の幸福度（ウェルビーイング）も高めます。", icon: "fa-face-smile-beam", targetStage: ['all'], targetGender: ['all'] },
+            { id: 10, text: "自分とは異なる意見や背景を持つ人の話を最後まで聞く", desc: "多様な価値観を受容する「寛容性」を育むための第一歩です。", icon: "fa-ear-listen", targetStage: ['all'], targetGender: ['all'] },
 
             // 【中高生・20代〜30代向け】
-            { id: 11, text: "学校で、普段あまり話さないクラスメイトに声をかける", desc: "学校内の小さな孤立を防ぎ、居心地の良いクラスを作ります。", icon: "fa-school", points: 15, targetStage: ['teen'], targetGender: ['all'] },
-            { id: 12, text: "SNSで見た情報を1つファクトチェックする", desc: "オンライン上で広がる無意識な変更の対策になります。", icon: "fa-heart", points: 10, targetStage: ['teen', 'youngAdult'], targetGender: ['all'] },
-            { id: 13, text: "地域の高齢者に元気に挨拶する", desc: "世代を超えた温かい配慮が、暮らしやすいコミュニティを作ります。", icon: "fa-map-signs", points: 15, targetStage: ['teen', 'youngAdult'], targetGender: ['all'] },
+            { id: 11, text: "学校で、普段あまり話さないクラスメイトに声をかける", desc: "学校内の小さな孤立を防ぎ、居心地の良いクラスを作ります。", icon: "fa-school", targetStage: ['teen'], targetGender: ['all'] },
+            { id: 12, text: "SNSで見た情報を1つファクトチェックする", desc: "オンライン上で広がる無意識な変更の対策になります。", icon: "fa-heart", targetStage: ['teen', 'youngAdult'], targetGender: ['all'] },
+            { id: 13, text: "地域の高齢者に元気に挨拶する", desc: "世代を超えた温かい配慮が、暮らしやすいコミュニティを作ります。", icon: "fa-map-signs", targetStage: ['teen', 'youngAdult'], targetGender: ['all'] },
 
             // 【社会人向け】
-            { id: 14, text: "職場で育休や時短勤務をしている同僚に、ねぎらいの言葉をかける", desc: "子育てと仕事の両立を応援し、働きやすい環境を作ります。", icon: "fa-briefcase", points: 15, targetStage: ['adult'], targetGender: ['all'] },
-            { id: 15, text: "後輩や同僚の意見を否定せずに、まずは「いいね」と受け入れる", desc: "心理的安全性を高め、職場のウェルビーイングを向上させます。", icon: "fa-handshake-angle", points: 15, targetStage: ['adult'], targetGender: ['all'] },
-            { id: 16, text: "家事や育児の分担について、家族とポジティブに話す", desc: "協力し合うことで、家庭内のウェルビーイングが高まります。", icon: "fa-house-user", points: 15, targetStage: ['adult'], targetGender: ['all'] },
+            { id: 14, text: "職場で育休や時短勤務をしている同僚に、ねぎらいの言葉をかける", desc: "子育てと仕事の両立を応援し、働きやすい環境を作ります。", icon: "fa-briefcase", targetStage: ['adult'], targetGender: ['all'] },
+            { id: 15, text: "後輩や同僚の意見を否定せずに、まずは「いいね」と受け入れる", desc: "心理的安全性を高め、職場のウェルビーイングを向上させます。", icon: "fa-handshake-angle", targetStage: ['adult'], targetGender: ['all'] },
+            { id: 16, text: "家事や育児の分担について、家族とポジティブに話す", desc: "協力し合うことで、家庭内のウェルビーイングが高まります。", icon: "fa-house-user", targetStage: ['adult'], targetGender: ['all'] },
 
             // 【全員向け：ボディイメージ】
-            { id: 6, text: "SNSで「見た目」に関する否定的な発言をしない", desc: "ルッキズム（外見至上主義）への偏見をなくし、多様な美しさを尊重しましょう。", icon: "fa-ban", points: 10, targetStage: ['all'], targetGender: ['all'] },
+            { id: 6, text: "SNSで「見た目」に関する否定的な発言をしない", desc: "ルッキズム（外見至上主義）への偏見をなくし、多様な美しさを尊重しましょう。", icon: "fa-ban", targetStage: ['all'], targetGender: ['all'] },
 
             // 【女性向け：健康】
-            { id: 7, text: "自分自身の体を労わる時間（リラックス等）を5分作る", desc: "心身の健康（特に女性特有の健康課題）に向き合い、自分を大切にする時間です。", icon: "fa-spa", points: 10, targetStage: ['all'], targetGender: ['female'] },
-            { id: 21, text: "女性の健康について、「今の自分が知りたいことは何だろう？」と考えてみる", desc: "気になることを振り返り、必要なら信頼できる情報源や医療専門職に相談するきっかけにしましょう。", icon: "fa-circle-question", points: 10, targetStage: ['all'], targetGender: ['female'] },
+            { id: 7, text: "自分自身の体を労わる時間（リラックス等）を5分作る", desc: "心身の健康（特に女性特有の健康課題）に向き合い、自分を大切にする時間です。", icon: "fa-spa", targetStage: ['all'], targetGender: ['female'] },
+            { id: 21, text: "女性の健康について、「今の自分が知りたいことは何だろう？」と考えてみる", desc: "気になることを振り返り、必要なら信頼できる情報源や医療専門職に相談するきっかけにしましょう。", icon: "fa-circle-question", targetStage: ['all'], targetGender: ['female'] },
             
             // 【男性向け・ジェンダーバイアス】
-            { id: 8, text: "「男だから/女だから」という言葉を使わずに会話する", desc: "無意識のジェンダーバイアス（偏見）に気づき、多様性を認め合うアクションです。", icon: "fa-venus-mars", points: 15, targetStage: ['all'], targetGender: ['all'] },
-            { id: 17, text: "自分の悩みを信頼できる人に話す", desc: "「強くいなければ」という男性特有の孤独感やプレッシャーを和らげる大切な一歩です。", icon: "fa-user-shield", points: 15, targetStage: ['teen', 'youngAdult', 'adult', 'midlife'], targetGender: ['male'] },
+            { id: 8, text: "「男だから/女だから」という言葉を使わずに会話する", desc: "無意識のジェンダーバイアス（偏見）に気づき、多様性を認め合うアクションです。", icon: "fa-venus-mars", targetStage: ['all'], targetGender: ['all'] },
+            { id: 17, text: "自分の悩みを信頼できる人に話す", desc: "「強くいなければ」という男性特有の孤独感やプレッシャーを和らげる大切な一歩です。", icon: "fa-user-shield", targetStage: ['teen', 'youngAdult', 'adult', 'midlife'], targetGender: ['male'] },
 
             // 【ミドル世代向け：フレイル予防】
-            { id: 18, text: "今日は10分歩いてみる", desc: "無理のない範囲で体を動かす習慣が、将来の健康づくりにつながります。", icon: "fa-person-walking", points: 10, targetStage: ['midlife'], targetGender: ['all'] },
-            { id: 19, text: "近所の人と一言会話する", desc: "身近な人とのつながりを保つことも、心身の健康を支える大切な一歩です。", icon: "fa-comments", points: 10, targetStage: ['midlife'], targetGender: ['all'] },
-            { id: 20, text: "椅子に座ったまま、足首をゆっくり回してみる", desc: "日常の中で無理なく体を動かすきっかけをつくりましょう。", icon: "fa-person", points: 10, targetStage: ['midlife'], targetGender: ['all'] },
+            { id: 18, text: "今日は10分歩いてみる", desc: "無理のない範囲で体を動かす習慣が、将来の健康づくりにつながります。", icon: "fa-person-walking", targetStage: ['midlife'], targetGender: ['all'] },
+            { id: 19, text: "近所の人と一言会話する", desc: "身近な人とのつながりを保つことも、心身の健康を支える大切な一歩です。", icon: "fa-comments", targetStage: ['midlife'], targetGender: ['all'] },
+            { id: 20, text: "椅子に座ったまま、足首をゆっくり回してみる", desc: "日常の中で無理なく体を動かすきっかけをつくりましょう。", icon: "fa-person", targetStage: ['midlife'], targetGender: ['all'] },
 
             // 【子育て世代への支援・寛容性】
-            { id: 4, text: "今日、身近な人のために、いつもより一つ多く何かをしてみよう。", desc: "身近な人たちに、安心感を与えることができます。", icon: "fa-baby", points: 10, targetStage: ['all'], targetGender: ['all'] }
+            { id: 4, text: "今日、身近な人のために、いつもより一つ多く何かをしてみよう。", desc: "身近な人たちに、安心感を与えることができます。", icon: "fa-baby", targetStage: ['all'], targetGender: ['all'] }
         ];
 
         const optionalMissions = [
-            { id: 101, text: "身近な場所のゴミを1つ拾う", desc: "小さな行動で、みんなが気持ちよく過ごせる場所をつくります。", icon: "fa-recycle", points: 5 },
-            { id: 102, text: "誰かの良いところを見つけて伝える", desc: "温かい言葉を贈ると、自分も相手も前向きな気持ちになれます。", icon: "fa-heart", points: 5 },
-            { id: 103, text: "yoppyをまだ使っていない人に勧める", desc: "みんなでユーザー数を増やそう！", icon: "fa-lightbulb", points: 5 }
+            { id: 101, text: "身近な場所のゴミを1つ拾う", desc: "小さな行動で、みんなが気持ちよく過ごせる場所をつくります。", icon: "fa-recycle" },
+            { id: 102, text: "誰かの良いところを見つけて伝える", desc: "温かい言葉を贈ると、自分も相手も前向きな気持ちになれます。", icon: "fa-heart" },
+            { id: 103, text: "yoppyをまだ使っていない人に勧める", desc: "みんなでユーザー数を増やそう！", icon: "fa-lightbulb" }
         ];
 
-        const STREAK_MILESTONE_DAYS = 3;
-        const STREAK_BONUS_POINTS = 10;
+        const WELLBEING_RECOVERY = 20;
+        const OPTIONAL_WELLBEING_RECOVERY = 5;
+        const DAILY_WELLBEING_DECAY = 10;
         let lastObservedDate = getTodayString();
-
-        const leaderboardParticipants = [
-            { name: "かめさん", points: 120, icon: "🐢" },
-            { name: "かもめさん", points: 95, icon: "🦆" },
-            { name: "ぞうさん", points: 80, icon: "🐘" },
-            { name: "へびさん", points: 60, icon: "🐍" }
-        ];
 
         // --- 2. 状態管理 (In-Memory State for simple version) ---
         let appState = {
-            totalPoints: 0,
+            wellbeing: 100,
+            lastWellbeingDate: null,
             lastPlayedDate: null, // 'YYYY-MM-DD'
             currentMissionId: null,
-            history: [], // [{date: 'YYYY-MM-DD', missionId: 1, text: "...", points: 10}]
-            optionalHistory: [], // [{date: 'YYYY-MM-DD', missionId: 101, text: "...", points: 5}]
-            profile: null // { stage: 'teen', gender: 'male' }
+            history: [], // [{date: 'YYYY-MM-DD', missionId: 1, text: "...", wellbeingChange: 20}]
+            optionalHistory: [], // [{date: 'YYYY-MM-DD', missionId: 101, text: "...", wellbeingChange: 5}]
+            profile: null // { stage: 'teen', gender: 'male', familyName: 'お母さん', familyAvatar: '🐻' }
         };
 
         // --- 3. DOM要素の取得 ---
         const splashScreen = document.getElementById('splashScreen');
         const profileScreen = document.getElementById('profileScreen');
         const mainScreen = document.getElementById('mainScreen');
+        const familyNameInput = document.getElementById('familyName');
+        const familyAvatarSelect = document.getElementById('familyAvatar');
         const userStageSelect = document.getElementById('userStage');
         const userGenderSelect = document.getElementById('userGender');
         const saveProfileBtn = document.getElementById('saveProfileBtn');
@@ -77,7 +74,13 @@
         const profileSummaryEl = document.getElementById('profileSummary');
         const tabs = [...document.querySelectorAll('[role="tab"]')];
         
-        const totalPointsEl = document.getElementById('totalPoints');
+        const familyNameDisplayEl = document.getElementById('familyNameDisplay');
+        const familyAvatarDisplayEl = document.getElementById('familyAvatarDisplay');
+        const wellbeingMoodDisplayEl = document.getElementById('wellbeingMoodDisplay');
+        const wellbeingStatusEl = document.getElementById('wellbeingStatus');
+        const wellbeingMeterEl = document.querySelector('.wellbeing-meter');
+        const wellbeingMeterFillEl = document.getElementById('wellbeingMeterFill');
+        const wellbeingValueEl = document.getElementById('wellbeingValue');
         const dateDisplayEl = document.getElementById('dateDisplay');
         const streakCountEl = document.getElementById('streakCount');
         const streakRewardEl = document.getElementById('streakReward');
@@ -90,10 +93,6 @@
         const completedOverlay = document.getElementById('completedOverlay');
         const optionalMissionsSection = document.getElementById('optionalMissionsSection');
         const optionalMissionsList = document.getElementById('optionalMissionsList');
-        const leaderboardList = document.getElementById('leaderboardList');
-        const yourRankEl = document.getElementById('yourRank');
-        const rankPointsEl = document.getElementById('rankPoints');
-        const rankDifferenceEl = document.getElementById('rankDifference');
         const historyListEl = document.getElementById('historyList');
         const emptyHistoryEl = document.getElementById('emptyHistory');
 
@@ -101,6 +100,7 @@
 
         function initApp() {
             loadState();
+            updateWellbeingForElapsedDays();
             
             if (!appState.profile) {
                 // プロフィール未設定の場合は設定画面を表示
@@ -112,32 +112,39 @@
                 mainScreen.classList.remove('hidden');
                 
                 // 選択された値をフォームに反映させておく
+                familyNameInput.value = appState.profile.familyName;
+                familyAvatarSelect.value = appState.profile.familyAvatar;
                 userStageSelect.value = appState.profile.stage;
                 userGenderSelect.value = appState.profile.gender;
                 saveProfileBtn.disabled = false;
 
                 renderProfileSummary();
+                renderWellbeing();
                 updateDateDisplay();
                 checkDailyMission();
-                renderPoints();
                 renderStreak();
-                renderLeaderboard();
                 renderHistory();
             }
         }
 
         // フォーム入力時のボタン有効化
-        userStageSelect.addEventListener('change', () => {
-            saveProfileBtn.disabled = !userStageSelect.value;
-        });
+        function updateProfileButtonState() {
+            saveProfileBtn.disabled = !userStageSelect.value || !familyNameInput.value.trim();
+        }
+
+        userStageSelect.addEventListener('change', updateProfileButtonState);
+        familyNameInput.addEventListener('input', updateProfileButtonState);
 
         // プロフィールを保存してはじめる
         saveProfileBtn.addEventListener('click', () => {
-            if (!userStageSelect.value) return;
+            const familyName = familyNameInput.value.trim();
+            if (!userStageSelect.value || !familyName) return;
 
             appState.profile = {
                 stage: userStageSelect.value,
-                gender: userGenderSelect.value
+                gender: userGenderSelect.value,
+                familyName,
+                familyAvatar: familyAvatarSelect.value
             };
             
             // プロフィールを変えた場合は新しい属性でミッションを引き直すためリセット
@@ -149,9 +156,9 @@
             profileScreen.classList.add('hidden');
             mainScreen.classList.remove('hidden');
             renderProfileSummary();
+            renderWellbeing();
             updateDateDisplay();
             checkDailyMission();
-            renderPoints();
             renderStreak();
             renderHistory();
         });
@@ -159,6 +166,8 @@
         // プロフィール変更ボタン
         resetProfileBtn.addEventListener('click', () => {
             if(confirm("属性を変更すると、今日のミッションが新しくなる場合があります。変更しますか？")) {
+                familyNameInput.value = appState.profile.familyName;
+                familyAvatarSelect.value = appState.profile.familyAvatar;
                 profileScreen.classList.remove('hidden');
                 mainScreen.classList.add('hidden');
             }
@@ -196,17 +205,26 @@
                 female: '女性',
                 male: '男性'
             };
-            profileSummaryEl.textContent = `${stages[appState.profile.stage] || '未設定'} ・ ${genders[appState.profile.gender] || '未設定'}`;
+            profileSummaryEl.textContent = `${appState.profile.familyName} ・ ${stages[appState.profile.stage] || '未設定'} ・ ${genders[appState.profile.gender] || '未設定'}`;
         }
 
         function loadState() {
             const savedState = localStorage.getItem('socialGoodAppState');
             if (savedState) {
                 appState = { ...appState, ...JSON.parse(savedState) };
+                delete appState.totalPoints;
                 if (appState.profile && appState.profile.stage === 'college') {
                     appState.profile.stage = 'youngAdult';
                 }
+                if (appState.profile) {
+                    appState.profile.familyName = appState.profile.familyName || '家族';
+                    appState.profile.familyAvatar = appState.profile.familyAvatar || '🐻';
+                }
             }
+            appState.wellbeing = Number.isFinite(appState.wellbeing)
+                ? Math.min(100, Math.max(0, appState.wellbeing))
+                : 100;
+            appState.lastWellbeingDate = appState.lastWellbeingDate || getTodayString();
         }
 
         function saveState() {
@@ -227,6 +245,26 @@
             return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
         }
 
+        function getNextDateString(dateString) {
+            const [year, month, day] = dateString.split('-').map(Number);
+            const date = new Date(year, month - 1, day + 1);
+            return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        }
+
+        function updateWellbeingForElapsedDays() {
+            const today = getTodayString();
+            while (appState.lastWellbeingDate < today) {
+                const dateToCheck = getNextDateString(appState.lastWellbeingDate);
+                if (dateToCheck >= today) break;
+                const completedThatDay = appState.history.some(item => item.date === dateToCheck);
+                if (!completedThatDay) {
+                    appState.wellbeing = Math.max(0, appState.wellbeing - DAILY_WELLBEING_DECAY);
+                }
+                appState.lastWellbeingDate = dateToCheck;
+            }
+            saveState();
+        }
+
         function getCurrentStreak() {
             const completedDates = new Set(appState.history.map(item => item.date));
             let date = getTodayString();
@@ -245,10 +283,38 @@
 
         function renderStreak() {
             const streak = getCurrentStreak();
-            const daysUntilBonus = STREAK_MILESTONE_DAYS - (streak % STREAK_MILESTONE_DAYS);
-
             streakCountEl.textContent = `${streak}日連続達成`;
-            streakRewardEl.textContent = `あと${daysUntilBonus}日で +${STREAK_BONUS_POINTS}pt ボーナス`;
+            streakRewardEl.textContent = '毎日の行動が家族の元気につながります';
+        }
+
+        function renderWellbeing() {
+            const wellbeing = appState.wellbeing;
+            const wellbeingStatus = wellbeing >= 80
+                ? '元気いっぱい'
+                : wellbeing >= 50
+                    ? 'まずまず'
+                    : wellbeing >= 25
+                        ? '少し疲れ気味'
+                        : wellbeing > 0
+                            ? '元気がないみたい'
+                            : '元気度が下がっています';
+            const wellbeingMood = wellbeing >= 70
+                ? '😊'
+                : wellbeing >= 40
+                    ? '😐'
+                    : wellbeing > 0
+                        ? '😟'
+                        : '😢';
+
+            familyNameDisplayEl.textContent = appState.profile.familyName;
+            familyAvatarDisplayEl.textContent = appState.profile.familyAvatar;
+            wellbeingMoodDisplayEl.textContent = wellbeingMood;
+            wellbeingStatusEl.textContent = wellbeingStatus;
+            wellbeingValueEl.textContent = wellbeing;
+            wellbeingMeterFillEl.style.width = `${wellbeing}%`;
+            wellbeingMeterEl.setAttribute('aria-valuenow', String(wellbeing));
+            wellbeingMeterFillEl.classList.toggle('is-low', wellbeing < 50);
+            wellbeingMeterFillEl.classList.toggle('is-critical', wellbeing < 25);
         }
 
         function updateDateDisplay() {
@@ -280,9 +346,11 @@
             const todayString = getTodayString();
             if (todayString !== lastObservedDate) {
                 lastObservedDate = todayString;
+                updateWellbeingForElapsedDays();
                 updateDateDisplay();
                 checkDailyMission();
                 renderStreak();
+                renderWellbeing();
             }
         }
 
@@ -341,7 +409,7 @@
             // アイコンのクラスをリセットして再設定
             missionIconEl.className = `fa-solid ${mission.icon} text-6xl text-orange-400 mb-6`;
             
-            completeBtn.querySelector('span').textContent = `ミッション達成！ (+${mission.points}pts)`;
+            completeBtn.querySelector('span').textContent = '家族を応援する';
             
             completedOverlay.classList.add('hidden');
             completeBtn.disabled = false;
@@ -377,44 +445,11 @@
                         <p class="text-xs text-gray-500 mt-1">${mission.desc}</p>
                     </div>
                     <button class="${isCompleted ? 'bg-gray-100 text-gray-500 cursor-default' : 'bg-orange-100 text-orange-700 hover:bg-orange-200'} text-xs font-bold px-3 py-2 rounded-full shrink-0" data-optional-mission-id="${mission.id}" ${isCompleted ? 'disabled' : ''}>
-                        ${isCompleted ? '達成済み' : `達成 +${mission.points}pt`}
+                        ${isCompleted ? '達成済み' : `応援 +${OPTIONAL_WELLBEING_RECOVERY}`}
                     </button>
                 `;
                 optionalMissionsList.appendChild(article);
             });
-        }
-
-        function renderPoints() {
-            // アニメーション効果のために、少しずつカウントアップさせることも可能です。
-            totalPointsEl.textContent = appState.totalPoints;
-            renderLeaderboard();
-        }
-
-        function renderLeaderboard() {
-            const entries = [
-                ...leaderboardParticipants,
-                { name: "あなた", points: appState.totalPoints, icon: "★", isYou: true }
-            ].sort((a, b) => b.points - a.points);
-            const yourRank = entries.findIndex(entry => entry.isYou) + 1;
-            const nextEntry = entries[yourRank - 2];
-
-            yourRankEl.textContent = `${yourRank}位`;
-            rankPointsEl.textContent = appState.totalPoints;
-            rankDifferenceEl.textContent = nextEntry
-                ? `あと ${nextEntry.points - appState.totalPoints}pt で${yourRank - 1}位`
-                : "トップのポイントです";
-
-            const visibleEntries = yourRank <= 5
-                ? entries.slice(0, 5)
-                : [...entries.slice(0, 4), entries[yourRank - 1]];
-            leaderboardList.innerHTML = visibleEntries.map((entry, index) => `
-                <div class="leaderboard-row ${entry.isYou ? 'is-you' : ''}">
-                    <span class="leaderboard-rank">${entry.isYou ? yourRank : entries.indexOf(entry) + 1}</span>
-                    <span class="leaderboard-avatar">${entry.icon}</span>
-                    <span class="flex-1 text-sm font-bold text-gray-700">${entry.name}${entry.isYou ? '（あなた）' : ''}</span>
-                    <span class="text-sm font-bold text-orange-600">${entry.points} pts</span>
-                </div>
-            `).join('');
         }
 
         function renderHistory() {
@@ -444,10 +479,7 @@
                             <p class="text-xs text-gray-400">${item.date}</p>
                         </div>
                     </div>
-                    <span class="text-right font-bold text-orange-600 text-sm">
-                        +${item.points}
-                        ${item.bonusPoints ? `<span class="block text-[10px] text-pink-600">ストリーク +${item.bonusPoints}</span>` : ''}
-                    </span>
+                    <span class="text-right font-bold text-teal-700 text-sm">${Number.isFinite(item.wellbeingChange) ? `元気度 +${item.wellbeingChange}` : '達成'}</span>
                 `;
                 historyListEl.appendChild(li);
             });
@@ -460,19 +492,16 @@
             const currentMission = getMissionById(appState.currentMissionId);
             if (!currentMission || appState.history.some(item => item.date === todayStr)) return;
 
-            const newStreak = getCurrentStreak() + 1;
-            const bonusPoints = newStreak % STREAK_MILESTONE_DAYS === 0 ? STREAK_BONUS_POINTS : 0;
-            const earnedPoints = currentMission.points + bonusPoints;
-
-            appState.totalPoints += earnedPoints;
+            const previousWellbeing = appState.wellbeing;
+            appState.wellbeing = Math.min(100, appState.wellbeing + WELLBEING_RECOVERY);
+            appState.lastWellbeingDate = todayStr;
             appState.lastPlayedDate = todayStr; // 今日クリアしたことを記録
             
             appState.history.push({
                 date: todayStr,
                 missionId: currentMission.id,
                 text: currentMission.text,
-                points: earnedPoints,
-                bonusPoints
+                wellbeingChange: appState.wellbeing - previousWellbeing
             });
 
             saveState();
@@ -482,7 +511,7 @@
             
             // 少し遅らせて画面を切り替える
             setTimeout(() => {
-                renderPoints();
+                renderWellbeing();
                 renderStreak();
                 renderHistory();
                 showCompletedState();
@@ -498,15 +527,16 @@
             if (!mission || !appState.history.some(item => item.date === todayStr)) return;
             if (appState.optionalHistory.some(item => item.date === todayStr && item.missionId === mission.id)) return;
 
-            appState.totalPoints += mission.points;
+            const previousWellbeing = appState.wellbeing;
+            appState.wellbeing = Math.min(100, appState.wellbeing + OPTIONAL_WELLBEING_RECOVERY);
             appState.optionalHistory.push({
                 date: todayStr,
                 missionId: mission.id,
                 text: mission.text,
-                points: mission.points
+                wellbeingChange: appState.wellbeing - previousWellbeing
             });
             saveState();
-            renderPoints();
+            renderWellbeing();
             renderOptionalMissions();
             renderHistory();
             createConfetti();

@@ -23,10 +23,28 @@
     <div id="profileScreen" class="brand-background fixed inset-0 z-50 flex flex-col justify-center items-center p-4 hidden">
         <div class="bg-white p-8 rounded-3xl shadow-xl w-full max-w-md text-center border-t-4 border-orange-400">
             <h2 class="text-2xl font-bold text-teal-700 mb-2">ようこそ！</h2>
-            <p class="text-gray-600 mb-6 text-sm leading-relaxed">あなたにぴったりのミッションをお届けするため、あなたについて少しだけ教えてください。</p>
+            <p class="text-gray-600 mb-6 text-sm leading-relaxed">応援したい家族について教えてください。その人に合ったミッションをお届けします。</p>
+
+            <div class="mb-4 text-left">
+                <label class="block text-gray-700 font-bold mb-2 text-sm" for="familyName">家族の呼び名 <span class="text-red-400 text-xs">*必須</span></label>
+                <input id="familyName" type="text" maxlength="20" autocomplete="off" placeholder="例：お母さん" class="shadow border border-orange-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-orange-300">
+            </div>
+
+            <div class="mb-4 text-left">
+                <label class="block text-gray-700 font-bold mb-2 text-sm" for="familyAvatar">アバター</label>
+                <select id="familyAvatar" class="shadow border border-orange-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-orange-300">
+                    <option value="🐻">🐻 くま</option>
+                    <option value="🐱">🐱 ねこ</option>
+                    <option value="🐰">🐰 うさぎ</option>
+                    <option value="🐼">🐼 パンダ</option>
+                    <option value="🦊">🦊 きつね</option>
+                    <option value="🐸">🐸 かえる</option>
+                    <option value="🐧">🐧 ペンギン</option>
+                </select>
+            </div>
             
             <div class="mb-4 text-left">
-                <label class="block text-gray-700 font-bold mb-2 text-sm" for="userStage">年代・立場 <span class="text-red-400 text-xs">*必須</span></label>
+                <label class="block text-gray-700 font-bold mb-2 text-sm" for="userStage">応援する家族の年代・立場 <span class="text-red-400 text-xs">*必須</span></label>
                 <select id="userStage" class="shadow border border-orange-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-orange-300">
                     <option value="" disabled selected>選択してください</option>
                     <option value="teen">中学生・高校生</option>
@@ -37,7 +55,7 @@
             </div>
             
             <div class="mb-8 text-left">
-                <label class="block text-gray-700 font-bold mb-2 text-sm" for="userGender">性別 <span class="text-gray-400 text-xs">任意</span></label>
+                <label class="block text-gray-700 font-bold mb-2 text-sm" for="userGender">応援する家族の性別 <span class="text-gray-400 text-xs">任意</span></label>
                 <select id="userGender" class="shadow border border-orange-200 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-orange-300">
                     <option value="all" selected>回答しない / その他</option>
                     <option value="female">女性</option>
@@ -46,7 +64,7 @@
             </div>
             
             <button id="saveProfileBtn" class="btn-primary w-full text-white font-bold py-3 rounded-full text-lg shadow-lg focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                ミッションをはじめる
+                家族を応援する
             </button>
         </div>
     </div>
@@ -59,10 +77,9 @@
                 <img src="header_logo.png" alt="" class="brand-logo w-9 h-9 mr-2">
                 <span>yoppy</span>
             </h1>
-            <div class="bg-white px-4 py-2 rounded-full shadow-md flex items-center space-x-2 border border-yellow-200">
-                <i class="fa-solid fa-coins text-orange-500"></i>
-                <span id="totalPoints" class="font-bold text-xl text-teal-800">0</span>
-                <span class="text-sm text-orange-600 font-medium">pts</span>
+            <div class="bg-white px-4 py-2 rounded-full shadow-md flex items-center space-x-2 border border-teal-100">
+                <i class="fa-solid fa-heart text-rose-500" aria-hidden="true"></i>
+                <span class="text-sm font-bold text-teal-800">家族を応援中</span>
             </div>
         </header>
 
@@ -70,11 +87,8 @@
             <button class="app-tab flex-1 px-2 py-3 text-sm font-bold" id="homeTab" type="button" role="tab" aria-selected="true" aria-controls="homePanel">
                 <i class="fa-solid fa-house mr-1.5" aria-hidden="true"></i>ホーム
             </button>
-            <button class="app-tab flex-1 px-2 py-3 text-sm font-bold" id="rankingTab" type="button" role="tab" aria-selected="false" aria-controls="rankingPanel" tabindex="-1">
-                <i class="fa-solid fa-ranking-star mr-1.5" aria-hidden="true"></i>ランキング
-            </button>
             <button class="app-tab flex-1 px-2 py-3 text-sm font-bold" id="profileTab" type="button" role="tab" aria-selected="false" aria-controls="profilePanel" tabindex="-1">
-                <i class="fa-solid fa-user mr-1.5" aria-hidden="true"></i><span class="hidden sm:inline">プロフィール・</span>記録
+                <i class="fa-solid fa-heart mr-1.5" aria-hidden="true"></i>家族・記録
             </button>
         </nav>
 
@@ -97,10 +111,34 @@
                         <i class="fa-solid fa-fire text-xl text-orange-500 mr-3" aria-hidden="true"></i>
                         <div>
                             <p id="streakCount" class="text-sm font-bold text-gray-800">0日連続達成</p>
-                            <p id="streakReward" class="text-xs text-gray-500 mt-0.5">あと3日で +10pt ボーナス</p>
+                            <p id="streakReward" class="text-xs text-gray-500 mt-0.5">毎日の行動が家族の元気につながります</p>
                         </div>
                     </div>
                     <span class="text-xs font-bold text-orange-600">ストリーク</span>
+                </section>
+
+                <section class="wellbeing-card mb-6 rounded-2xl p-5 sm:p-6" aria-labelledby="wellbeingTitle">
+                    <div class="flex items-center gap-4">
+                        <div class="wellbeing-avatar" aria-hidden="true">
+                            <span id="familyAvatarDisplay">🐻</span>
+                            <span id="wellbeingMoodDisplay" class="wellbeing-mood">😊</span>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <p id="wellbeingTitle" class="text-sm font-bold text-teal-800">家族の元気度</p>
+                            <div class="mt-1 flex items-center justify-between gap-2">
+                                <p id="familyNameDisplay" class="font-bold text-gray-800">家族</p>
+                                <p id="wellbeingStatus" class="text-sm font-bold text-teal-700">元気いっぱい</p>
+                            </div>
+                            <div class="wellbeing-meter mt-3" role="progressbar" aria-label="家族の元気度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                                <div id="wellbeingMeterFill" class="wellbeing-meter-fill"></div>
+                            </div>
+                            <div class="mt-1 flex justify-between text-xs text-gray-500">
+                                <span>元気度</span>
+                                <span><span id="wellbeingValue">100</span> / 100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-xs leading-relaxed text-gray-500">ミッション達成で元気度が回復します。達成できなかった日は、翌日から少しずつ下がります。これはアプリ内の応援表現で、実際の健康状態を示すものではありません。</p>
                 </section>
             
             <!-- ミッションカード -->
@@ -111,11 +149,11 @@
                         <i class="fa-solid fa-check text-4xl text-teal-500"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-teal-700 mb-2">Awesome!</h3>
-                    <p class="text-gray-600 text-center text-sm px-4">今日のミッションを達成しました！<br>明日もまたチェックしてね。</p>
+                    <p class="text-gray-600 text-center text-sm px-4">今日の応援ミッションを達成しました！<br>明日もまたチェックしてね。</p>
                 </div>
 
                 <div class="flex justify-between items-center mb-4">
-                    <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">今日のアクション</span>
+                    <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">家族への今日の応援</span>
                     <span id="dateDisplay" class="text-xs text-gray-500 font-medium"></span>
                 </div>
 
@@ -123,11 +161,12 @@
                     <i id="missionIcon" class="fa-solid fa-gift text-5xl text-orange-400 mb-5"></i>
                     <h2 id="missionText" class="text-xl font-bold text-gray-800 mb-3 leading-snug">ミッションをロード中...</h2>
                     <p id="missionDesc" class="text-sm text-gray-500 leading-relaxed">少々お待ちください...</p>
+                    <p class="mt-3 text-xs font-bold text-teal-700">達成すると元気度 +20（最大100）</p>
                 </div>
 
                 <button id="completeBtn" class="btn-primary w-full text-white font-bold py-3.5 rounded-xl text-base shadow-sm flex justify-center items-center space-x-2">
                     <i class="fa-solid fa-check-circle"></i>
-                    <span>ミッション達成！</span>
+                    <span>家族を応援する</span>
                 </button>
             </div>
 
@@ -136,38 +175,10 @@
                     <h3 id="optionalMissionsTitle" class="text-lg font-bold text-gray-700 flex items-center">
                         <i class="fa-solid fa-sparkles mr-2 text-pink-500"></i> オプショナルミッション
                     </h3>
-                    <span class="text-xs font-bold text-orange-500">追加ポイント</span>
+                    <span class="text-xs font-bold text-rose-500">元気度アップ</span>
                 </div>
-                <p class="text-xs text-gray-500 mb-3">今日のミッション達成おめでとう！余裕があれば、もう一歩チャレンジしてみましょう。</p>
+                <p class="text-xs text-gray-500 mb-3">今日の応援ありがとう！余裕があれば、もう一歩チャレンジしてみましょう。</p>
                 <div id="optionalMissionsList" class="space-y-3"></div>
-            </section>
-            </section>
-
-            <section id="rankingPanel" class="hidden" role="tabpanel" aria-labelledby="rankingTab" tabindex="0">
-            <section class="leaderboard-card w-full mb-6" aria-labelledby="leaderboardTitle">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 id="leaderboardTitle" class="text-lg font-bold text-gray-700 flex items-center">
-                        <i class="fa-solid fa-ranking-star mr-2 text-yellow-500"></i> みんなのランキング
-                    </h3>
-                    <span class="leaderboard-badge">ポイント比較</span>
-                </div>
-                <div class="leaderboard-summary flex items-center justify-between rounded-2xl p-4 mb-4">
-                    <div class="flex items-center">
-                        <div class="leaderboard-you-icon mr-3">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs text-teal-700 font-bold">あなたの順位</p>
-                            <p id="yourRank" class="text-2xl font-bold text-teal-800">-位</p>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <p id="rankDifference" class="text-xs text-gray-500">みんなと一緒に活動中</p>
-                        <p class="text-sm font-bold text-orange-600"><span id="rankPoints">0</span> pts</p>
-                    </div>
-                </div>
-                <div id="leaderboardList" class="space-y-2"></div>
-                <p class="text-[10px] text-gray-400 mt-3 text-center">ランキングは現在この端末でのデモ表示です</p>
             </section>
             </section>
 
@@ -175,25 +186,25 @@
                 <section class="content-card p-5 sm:p-6" aria-labelledby="profileTitle">
                     <div class="flex items-center justify-between gap-3">
                         <div>
-                            <h2 id="profileTitle" class="text-lg font-bold text-gray-800">プロフィール</h2>
+                            <h2 id="profileTitle" class="text-lg font-bold text-gray-800">応援する家族</h2>
                             <p id="profileSummary" class="text-sm text-gray-500 mt-2"></p>
                         </div>
                         <button id="resetProfileBtn" class="shrink-0 px-4 py-2 rounded-lg border border-gray-200 text-sm font-bold text-teal-700 hover:bg-teal-50">
-                            <i class="fa-solid fa-gear mr-1" aria-hidden="true"></i>変更
+                            <i class="fa-solid fa-gear mr-1" aria-hidden="true"></i>設定変更
                         </button>
                     </div>
                 </section>
 
                 <section class="content-card p-5 sm:p-6" aria-labelledby="historyTitle">
                     <h2 id="historyTitle" class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fa-solid fa-clock-rotate-left mr-2 text-teal-600"></i>最近の記録
+                        <i class="fa-solid fa-clock-rotate-left mr-2 text-teal-600"></i>最近の応援記録
                     </h2>
                     <ul id="historyList" class="space-y-2">
                     <!-- 履歴アイテムがここに入る -->
                     </ul>
                     <div id="emptyHistory" class="text-center py-6 text-gray-500">
                         <i class="fa-solid fa-seedling text-2xl text-gray-300 mb-2"></i>
-                        <p class="text-sm">まだ履歴がありません。<br>今日のミッションを達成してみましょう！</p>
+                        <p class="text-sm">まだ履歴がありません。<br>今日のミッションで家族を応援しましょう！</p>
                     </div>
                 </section>
             </section>
